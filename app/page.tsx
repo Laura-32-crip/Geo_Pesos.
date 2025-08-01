@@ -1,25 +1,23 @@
 import React from 'react';
 
 interface Item {
-  [key: string]: unknown;
+  [key: string]: string | number | boolean | null;
 }
 
 interface Props {
-  data: Item[];
+  data?: Item[]; // El "?" permite que sea opcional
 }
 
-const Page: React.FC<Props> = ({ data }) => {
+const Page: React.FC<Props> = ({ data = [] }) => {
   return (
     <ul>
       {data.map((item, index) => (
         <li key={index}>
-          {Object.entries(item as Record<string, unknown>).map(
-            ([key, value]) => (
-              <div key={key}>
-                <strong>{key}:</strong> {String(value)}
-              </div>
-            )
-          )}
+          {Object.entries(item).map(([key, value]) => (
+            <div key={key}>
+              <strong>{key}:</strong> {String(value)}
+            </div>
+          ))}
         </li>
       ))}
     </ul>
@@ -27,3 +25,4 @@ const Page: React.FC<Props> = ({ data }) => {
 };
 
 export default Page;
+
