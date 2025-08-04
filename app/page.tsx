@@ -1,14 +1,12 @@
 import React from 'react';
 
-interface Item {
-  [key: string]: string | number | boolean | null;
-}
+const Page = () => {
+  const data = [
+    { nombre: "Juan", edad: "25" },
+    { nombre: "Ana", edad: "30" },
+    { nombre: "Luis", edad: "40" }
+  ];
 
-interface Props {
-  data?: Item[]; // El "?" permite que sea opcional
-}
-
-const Page: React.FC<Props> = ({ data = [] }) => {
   return (
     <ul>
       {data.map((item, index) => (
@@ -25,4 +23,3 @@ const Page: React.FC<Props> = ({ data = [] }) => {
 };
 
 export default Page;
-
